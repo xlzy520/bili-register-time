@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Bilibili短链生成器</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/papercss@1.8.2/dist/paper.min.css">
+  <meta name="keywords" content="哔哩哔哩, bilibili, 短链生成">
+  <meta name="description" content="生成b23.tv格式的短链">
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+    #app{
+      min-height: 100vh;
+      max-width: 960px;
+      margin: auto;
+    }
+    .title{
+      color: #f6d365;
+      text-align: center;
+    }
+    .submit-btn{
+      width: 80%;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 40px;
+      padding: 15px 30px;
+      margin-top: 30px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: rgb(147,51,234);
+      border-radius: 9999px;
+      color: #fff;
+    }
+    .submit-btn:hover{
+      color: rgb(147, 51, 234);
+      background: #fff;
+      border-color: rgb(233, 213, 255);
+    }
+    .form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #origin_url{
+      width: 80%;
+      /*height: 80px;*/
+    }
+    .short-url{
+      width: 80%;
+      margin-top: 100px;
+    }
+    .short-url-title{
+      font-size: 30px;
+      color: #333;
+    }
+
+
+  </style>
+</head>
+<body>
+<div id="app">
+  <h4 class="title">哔哩哔哩短链生成器</h4>
+
+  <div class="form">
+    <input value="https%3A%2F%2Fmessage.bilibili.com%2F" id="origin_url" type="url" name="origin_url">
+    <div class="submit-btn" id="submit">生成短链</div>
+    <div class="short-url">
+      <div class="short-url-title">短链接</div>
+      <div class="short-url-value"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <a href=""></a>
+  </div>
+
+
+
+</div>
+
+<script>
+  document.querySelector('#submit').addEventListener('click', () => {
+    const origin_url = document.querySelector('#origin_url')
+    const value = origin_url.value
+    if (!value) {
+      alert('请输入源链接')
+      return
+    }
+    const base_url = 'https://bili-short-url-xlzy520.vercel.app/'
+    const url = base_url + encodeURIComponent(origin_url)
+    fetch(url).then(res => res.json()).then(res => {
+      console.log(res);
+      if (res) {
+
+      }
+
+    })
+  })
+</script>
+</body>
+</html>
