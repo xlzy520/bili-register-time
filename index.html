@@ -95,7 +95,7 @@
   <h4 class="title">哔哩哔哩短链生成器</h4>
 
   <div class="form">
-    <input id="origin_url" type="url" name="origin_url">
+    <input id="origin_url" type="url" name="origin_url" placeholder="https://i0.hdslb.com/bfs/album/d8fd43a41bd32b22addbb966036c582d1296298f.jpg">
     <div class="submit-btn" id="submit">生成短链</div>
     <div class="short-url">
       <div class="short-url-title">短链接</div>
@@ -122,29 +122,6 @@
 </div>
 
 <script>
-  document.querySelector('#submit').addEventListener('click', () => {
-    const origin_url = document.querySelector('#origin_url')
-    const value = origin_url.value
-    // const value = 'https://i0.hdslb.com/bfs/album/d8fd43a41bd32b22addbb966036c582d1296298f.jpg'
-    if (!value) {
-      alert('请输入源链接')
-      return
-    }
-    const base_url = 'https://bili-short-url-xlzy520.vercel.app/short_url?url='
-    const url = base_url + encodeURIComponent(value)
-    fetch(url).then(res => res.json()).then(res => {
-      console.log(res);
-      if (res.success) {
-        const shortUrl = document.querySelector('.short-url-value')
-        shortUrl.textContent = res.short_url
-        document.querySelector('.copy').classList.remove('hidden')
-      } else {
-        alert(res.msg)
-      }
-
-    })
-  })
-
   var clipboard = new ClipboardJS('.copy', {
     text: function () {
       return document.querySelector('.short-url-value').textContent;
@@ -158,6 +135,29 @@
   clipboard.on('error', function (e) {
     alert(e);
   });
+  document.querySelector('#submit').addEventListener('click', () => {
+    const origin_url = document.querySelector('#origin_url')
+    let value = origin_url.value
+    const defaultValue = 'https://i0.hdslb.com/bfs/album/d8fd43a41bd32b22addbb966036c582d1296298f.jpg'
+    if (!value) {
+      value = defaultValue
+    }
+    const base_url = 'https://bili-short-url-xlzy520.vercel.app/short_url?url='
+    const url = base_url + encodeURIComponent(value)
+    fetch(url).then(res => res.json()).then(res => {
+      console.log(res);
+      if (res.success) {
+        const shortUrl = document.querySelector('.short-url-value')
+        const copy = document.querySelector('.copy')
+        shortUrl.textContent = res.short_url
+        document.querySelector('.copy').classList.remove('hidden')
+        copy.click()
+      } else {
+        alert(res.msg)
+      }
+
+    })
+  })
 </script>
 </body>
 </html>
