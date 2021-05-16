@@ -83,6 +83,9 @@
       margin-top: 30px;
       border-color: transparent;
     }
+    .hidden{
+      display: none;
+    }
 
   </style>
 </head>
@@ -97,7 +100,7 @@
       <div class="short-url-title">短链接</div>
       <div class="short-url-item">
         <div class="short-url-value"></div>
-        <div class="copy">
+        <div class="copy hidden">
           复制
         </div>
       </div>
@@ -133,6 +136,7 @@
       if (res.success) {
         const shortUrl = document.querySelector('.short-url-value')
         shortUrl.textContent = res.short_url
+        document.querySelector('.copy').classList.remove('hidden')
       } else {
         alert(res.msg)
       }
