@@ -61,7 +61,7 @@ module.exports = cors(async(req, res) => {
       res.end()
     } else {
       res.send({
-        short_url: url,
+        short_url: data.content,
         success: true
       });
       res.end()
