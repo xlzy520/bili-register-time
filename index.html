@@ -50,8 +50,17 @@
       align-items: center;
       justify-content: center;
     }
-    #origin_url{
+    .origin-url-input{
       width: 80%;
+      display: flex;
+      align-items: center;
+    }
+    .close-icon{
+      margin-left: -40px;
+      cursor: pointer;
+    }
+    #origin_url{
+      width: 100%;
       /*height: 80px;*/
     }
     .short-url{
@@ -89,7 +98,6 @@
     .hidden{
       display: none;
     }
-
   </style>
 </head>
 <body>
@@ -97,7 +105,11 @@
   <h4 class="title">哔哩哔哩短链生成器</h4>
 
   <div class="form">
-    <input id="origin_url" type="url" name="origin_url" placeholder="https://i0.hdslb.com/bfs/album/d8fd43a41bd32b22addbb966036c582d1296298f.jpg">
+    <div class="origin-url-input">
+      <input id="origin_url" type="url" name="origin_url" placeholder="https://i0.hdslb.com/bfs/album/d8fd43a41bd32b22addbb966036c582d1296298f.jpg">
+      <svg class="close-icon hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z" fill="currentColor"></path></svg>
+    </div>
+
     <div class="submit-btn" id="submit">生成短链</div>
     <div class="short-url">
       <div class="short-url-title">短链接</div>
@@ -138,10 +150,6 @@
       duration: 1500
     }).showToast();
   });
-
-  clipboard.on('error', function (e) {
-    alert(e);
-  });
   document.querySelector('#submit').addEventListener('click', () => {
     const origin_url = document.querySelector('#origin_url')
     let value = origin_url.value
@@ -169,6 +177,27 @@
       }
 
     })
+  })
+
+  // 控制输入框的关闭图标显示与隐藏的方法
+  function toggleCloseIcon(value) {
+    const closeIcon = document.querySelector('.close-icon')
+    const classList = closeIcon.classList
+    if (value) {
+      classList.contains('hidden') && classList.remove('hidden')
+    } else {
+      classList.add('hidden')
+    }
+  }
+
+  document.querySelector('#origin_url').addEventListener('change', (evt) => {
+    const value = evt.target.value
+    toggleCloseIcon(value)
+  })
+  document.querySelector('.close-icon').addEventListener('click', () => {
+    const origin_url = document.querySelector('#origin_url')
+    origin_url.value = ''
+    toggleCloseIcon()
   })
 </script>
 </body>
