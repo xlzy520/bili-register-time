@@ -3,8 +3,15 @@ const path = require('path');
 const app = express();
 const shortUrl = require('./api/index')
 
+const allowedOrigins = [
+  'http://localhost:63342',
+  'https://xlzy520.cn'
+];
 app.all('*',(req,res,next)=>{
-  res.header("Access-Control-Allow-Origin","https://xlzy520.cn");
+  const origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Methods','PUT,GET,POST,DELETE,OPTIONS');
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header('Access-Control-Allow-Headers','Content-Type');
