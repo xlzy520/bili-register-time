@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { cors } = require('../utils');
 
 const getShortUrl = async (url) => {
   try {
@@ -38,12 +37,12 @@ const getShortUrl = async (url) => {
   } catch (e) {
     console.log(e);
   }
- 
+  
 }
 
 // getShortUrl('https://i0.hdslb.com/bfs/album/d8fd43a41bd32b22addbb966036c582d1296298f.jpg')
 
-module.exports = cors(async(req, res) => {
+module.exports = async(req, res) => {
   const { url } = req.query;
   if (!url) {
     res.send({
@@ -69,4 +68,4 @@ module.exports = cors(async(req, res) => {
   }
   
   res.end();
-})
+}

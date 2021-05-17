@@ -4,13 +4,16 @@
   "description": "将任意链接转化为Bilibili短链，例如：https://b23.tv/F78kbY",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "./node_modules/.bin/nodemon bin/www",
+    "start": "node bin/www"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "micro-cors": "^0.1.1",
-    "vercel": "^22.0.1"
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
