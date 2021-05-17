@@ -74,7 +74,7 @@
     if (!value) {
       value = defaultValue
     }
-    const base_url = 'https://bili-short-url-xlzy520.vercel.app/short_url?url='
+    const base_url = 'https://service-kefssw6i-1253419200.gz.apigw.tencentcs.com/short_url?url='
     const url = base_url + encodeURIComponent(value)
     fetch(url).then(res => res.json()).then(res => {
       console.log(res);
