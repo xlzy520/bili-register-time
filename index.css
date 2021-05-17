@@ -16,7 +16,6 @@ html, body {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  line-height: 40px;
   padding: 15px 30px;
   margin-top: 30px;
   cursor: pointer;
@@ -25,6 +24,7 @@ html, body {
   border-radius: 9999px;
   color: #fff;
 }
+
 .submit-btn:hover{
   color: rgb(147, 51, 234);
   background: #fff;
@@ -68,6 +68,11 @@ html, body {
   justify-content: space-between;
   margin-top: 30px;
 }
+.short-url-item.bg-gray{
+  width: 300px;
+  height: 48px;
+  background: #eee;
+}
 .copy{
 
 }
@@ -89,3 +94,11 @@ html, body {
 }
 
 
+@media (max-width: 768px) {
+  .title, .footer{
+    margin-top: 120px;
+  }
+  .form, .submit-btn{
+    margin-top: 60px;
+  }
+}
