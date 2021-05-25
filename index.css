@@ -58,9 +58,17 @@ html, body {
   color: #333;
 }
 .short-url-value{
+  display: flex;
+  align-items: baseline;
   line-height: 2;
   font-size: 24px;
   color: #f9bf45;
+}
+.short-url-value svg{
+  width: 25px;
+  height: 25px;
+  color: #aaa;
+  margin-left: 5px;
 }
 .short-url-item{
   display: flex;
@@ -69,7 +77,6 @@ html, body {
   margin-top: 30px;
 }
 .short-url-item.bg-gray{
-  width: 300px;
   height: 48px;
   background: #eee;
 }
