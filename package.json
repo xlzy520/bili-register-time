@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "./node_modules/.bin/nodemon bin/www",
-    "start": "node bin/www"
+    "start": "node bin/www",
+    "deploy": "sls deploy"
   },
   "author": "",
   "license": "ISC",
