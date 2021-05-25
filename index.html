@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Bilibili短链生成器</title>
+  <meta name="keywords" content="哔哩哔哩, bilibili, 短链生成">
+  <meta name="description" content="生成b23.tv格式的短链">
+  <link href="https://cdn.bootcss.com" rel="dns-prefetch">
+  <link href="https://cdn.jsdelivr.net" rel="dns-prefetch">
   <link rel="icon" href="./favicon.png">
   <link rel="stylesheet" href="./index.css?v=517">
   <link rel="stylesheet" href="./loading.css">
@@ -11,8 +15,6 @@
   <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
   <link href="https://cdn.bootcdn.net/ajax/libs/toastify-js/1.10.0/toastify.min.css" rel="stylesheet">
   <script src="https://cdn.bootcdn.net/ajax/libs/toastify-js/1.10.0/toastify.min.js"></script>
-  <meta name="keywords" content="哔哩哔哩, bilibili, 短链生成">
-  <meta name="description" content="生成b23.tv格式的短链">
 </head>
 <body>
 <div id="app">
@@ -28,13 +30,13 @@
     <div class="short-url">
       <div class="short-url-title">短链接</div>
       <div class="short-url-item bg-gray">
-        <div class="short-url-value">
-          <div id="short-url-value"></div>
+        <a id="short-url-value" rel="noreferrer" href="" target="_blank">
+          <div class="short-url-value"></div>
           <svg class="hidden outbound-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
             <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
             <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
           </svg>
-        </div>
+        </a>
         <div class="copy hidden">
           复制
         </div>
@@ -87,9 +89,11 @@
       fetch(url).then(res => res.json()).then(res => {
         console.log(res);
         if (res.success) {
-          const shortUrl = document.querySelector('#short-url-value')
+          const shortUrlLink = document.querySelector('#short-url-value')
+          const shortUrlValue = document.querySelector('.short-url-value')
           const copy = document.querySelector('.copy')
-          shortUrl.textContent = res.short_url
+          shortUrlValue.textContent = res.short_url
+          shortUrlLink.href = res.short_url
           document.querySelector('.outbound-icon').classList.remove('hidden')
           document.querySelector('.copy').classList.remove('hidden')
           document.querySelector('.bg-gray').classList.remove('bg-gray')
@@ -106,16 +110,6 @@
       }).finally(() => {
         toggleLoading(false)
       })
-    })
-  }
-
-  function handleShortUrlClick() {
-    const shortUrlValue = document.querySelector('.short-url-value')
-    shortUrlValue.addEventListener('click', () => {
-      const value = shortUrlValue.textContent
-      if (value) {
-        window.open(value, true)
-      }
     })
   }
 
@@ -144,7 +138,6 @@
   }
 
   function init() {
-    handleShortUrlClick()
     handleSubmit()
     document.querySelector('#origin_url').addEventListener('change', (evt) => {
       const value = evt.target.value
