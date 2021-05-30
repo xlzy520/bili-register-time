@@ -1,9 +1,6 @@
-# bili-short-url
+# bili-register-time
 
-将B站站内链接转化为Bilibili短链，例如：https://b23.tv/F78kbY
+根据 [API](https://member.bilibili.com/x2/creative/h5/calendar/card?ts=1576425600&spm_id_from=333.788.b_636f6d6d656e74.6) 获取到的数据粘贴进来，生成格式化好的B站注册时间。
 
 ### 预览
-[bili-short-url](https://xlzy520.cn/bili-short-url/)
-
-### 参考
-[b23tvGenerator](https://github.com/LXG-Shadow/b23tvGenerator)
+[bili-register-time](https://xlzy520.cn/bili-register-time/)
