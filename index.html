@@ -91,11 +91,15 @@
   });
 
   function getRegisterTime(data) {
-    const joinTime = data?.data?.jointime
+    const joinTimeArr = data.split('jointime":')
+    const joinTime = joinTimeArr.length > 1 && joinTimeArr[1].substr(0, 10)
     return formatTime(joinTime * 1000)
   }
 
   function formatTime(timestamp) {
+    if (!timestamp) {
+      return 'Invalid Date'
+    }
     return dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss')
   }
 
@@ -106,12 +110,6 @@
       if (!value) {
         ToastError('粘贴的内容为空')
         return
-      }
-      try {
-        value = JSON.parse(value)
-      } catch (e) {
-        ToastError('粘贴的内容不符合格式要求，请检查是否复制完整!')
-        return;
       }
       const registerTime = getRegisterTime(value)
       const registerTimeFormat = formatTime(registerTime)
