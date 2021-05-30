@@ -51,6 +51,7 @@ html, body {
 }
 #userInfo{
   width: 100%;
+  padding-right: 30px;
   /*height: 80px;*/
 }
 .short-url{
