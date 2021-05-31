@@ -93,7 +93,7 @@ html, body {
   cursor: pointer;
 }
 .footer{
-  width: 180px;
+  width: 240px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -115,6 +115,9 @@ html, body {
     margin-top: 60px;
   }
   .form, .submit-btn{
+    margin-top: 40px;
+  }
+  .short-url{
     margin-top: 40px;
   }
 }
