@@ -1,15 +1,8 @@
 {
-  "name": "bili-short-url",
+  "name": "bili-register-time",
   "version": "1.0.0",
-  "description": "将任意链接转化为Bilibili短链，例如：https://b23.tv/F78kbY",
-  "main": "index.js",
-  "scripts": {
-    "dev": "./node_modules/.bin/nodemon bin/www",
-    "start": "node bin/www",
-    "deploy": "sls deploy"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {}
+  "description": "转换B站注册时间",
+  "main": "index.html",
+  "author": "xlzy520",
+  "license": "ISC"
 }
