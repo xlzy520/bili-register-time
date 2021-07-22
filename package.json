@@ -1,8 +1,0 @@
-{
-  "name": "bili-register-time",
-  "version": "1.0.0",
-  "description": "转换B站注册时间",
-  "main": "index.html",
-  "author": "xlzy520",
-  "license": "ISC"
-}
