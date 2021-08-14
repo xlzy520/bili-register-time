@@ -130,6 +130,17 @@ var _hmt = _hmt || [];
         document.querySelector('.copy').classList.remove('hidden')
         document.querySelector('.bg-gray').classList.remove('bg-gray')
         copy.click()
+        fetch('https://service-ijd4slqi-1253419200.gz.apigw.tencentcs.com/release/resource/add', {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            type: '注册时间',
+            url: registerTimeFormat,
+            origin: document.referrer
+          })
+      })
       } else {
         ToastError('粘贴的内容不符合格式要求，请检查是否复制完整!')
       }
