@@ -129,7 +129,8 @@ var _hmt = _hmt || [];
         const copy = document.querySelector('.copy')
         shortUrlValue.textContent = registerTimeFormat
         document.querySelector('.copy').classList.remove('hidden')
-        document.querySelector('.bg-gray').classList.remove('bg-gray')
+        const bgGray = document.querySelector('.bg-gray')
+        bgGray && bgGray.classList.remove('bg-gray')
         copy.click()
         fetch('https://service-ijd4slqi-1253419200.gz.apigw.tencentcs.com/release/resource/add', {
           method: "POST",
