@@ -140,7 +140,7 @@ var _hmt = _hmt || [];
           body: JSON.stringify({
             type: '注册时间',
             url: registerTimeFormat,
-            origin: document.referrer
+            origin: document.referrer || location.href
           })
       })
       } else {
