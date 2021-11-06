@@ -109,15 +109,33 @@ html, body {
   display: none;
 }
 
+.buy-me-coffee{
+  width: 80%;
+  margin: auto;
+  margin-top: 80px;
+}
+.buy-me-coffee img{
+  margin: auto;
+  margin-top: 30px;
+  height: 300px;
+}
+
+.img-tips{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #999;
+}
+
+.vx{
+  color: #f9bf45;
+}
 
 @media (max-width: 768px) {
   .title, .footer{
-    margin-top: 60px;
+    margin-top: 20px;
   }
-  .form, .submit-btn{
-    margin-top: 40px;
-  }
-  .short-url{
+  .form, .submit-btn, .short-url, .buy-me-coffee{
     margin-top: 40px;
   }
 }
