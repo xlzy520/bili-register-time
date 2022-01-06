@@ -139,3 +139,14 @@ html, body {
     margin-top: 40px;
   }
 }
+
+.v-hidden{
+  visibility: hidden;
+}
+
+iframe.submit-btn{
+  height: 55px;
+  opacity: 0.0001;
+  padding: 0;
+  margin-top: -55px;
+}

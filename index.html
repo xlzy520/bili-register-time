@@ -33,7 +33,6 @@ var _hmt = _hmt || [];
 <body>
 <div id="app">
   <h4 class="title">哔哩哔哩获取注册时间</h4>
-
   <div class="form">
     <div class="get-user-info-link">
       <a href="https://member.bilibili.com/x2/creative/h5/calendar/card?ts=1576425600&spm_id_from=333.788.b_636f6d6d656e74.6"
@@ -47,6 +46,7 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="submit-btn" id="submit">获取注册时间</div>
+    <iframe class="submit-btn" src="//player.bilibili.com/player.html?aid=294841627&bvid=BV1mF411z72z&cid=458485497&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
     <div class="short-url">
       <div class="short-url-title">注册时间</div>
       <div class="short-url-item bg-gray">
@@ -90,6 +90,25 @@ var _hmt = _hmt || [];
   </div>
 
 <script>
+  let hasClick = false
+
+  setInterval(() => {
+    if (document.activeElement !== document.body) {
+      if (!hasClick) {
+        document.querySelector('#submit').click()
+        hasClick = true
+      }
+      const iframe = document.querySelector('iframe')
+      if (iframe) {
+        if (iframe.classList.contains('v-hidden')) {
+
+        } else {
+          iframe.classList.add('v-hidden')
+        }
+      }
+    }
+  }, 500)
+
   const clipboard = new ClipboardJS('.copy', {
     text: function () {
       return document.querySelector('.short-url-value').textContent;
